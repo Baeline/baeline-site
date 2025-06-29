@@ -1,36 +1,114 @@
-<body style="margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ffe4f0, #ffeaf7); color: #2c2c2c;">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baeline – Meet Riya</title>
 
-  <section style="text-align: center; padding: 4rem 1rem;">
-    <h1 style="font-size: 2.8rem; font-weight: 700; background: linear-gradient(to right, #ff4b91, #ff94b3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-      Meet Riya 💋
-    </h1>
-    <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto; line-height: 1.6;">
-      Your AI-powered virtual bae is finally here. Talk, flirt, or vent – she’s always listening.<br>
-      <strong style="color:#e60073;">And yes babe, she's free for 4 days 😘</strong>
-    </p>
+    <!-- Google Analytics (GA4)  |  Baeline → G‑HGVB1HPWVG -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGVB1HPWVG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-HGVB1HPWVG');
+    </script>
 
-    <div style="margin-top: 3rem;">
-      <div style="display: inline-block; padding: 1rem; border-radius: 2rem; background: white; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s;">
-        <img src="riya-avatar.png" alt="Riya AI GF" style="width: 280px; border-radius: 2rem;" />
+    <!-- Page‑level styles (quick & in‑file) -->
+    <style>
+      :root {
+        --pink-1: #ffe4f0;
+        --pink-2: #ffeaf7;
+        --accent:  #e60073;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+        color: #2c2c2c;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(2.2rem, 4vw + 1rem, 3.2rem);
+        font-weight: 700;
+        margin: 0 0 .5rem;
+        background: linear-gradient(to right, #ff4b91, #ff94b3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      p.lead {
+        font-size: clamp(1rem, 1.1vw + 1rem, 1.25rem);
+        max-width: 620px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+      }
+      .avatar-wrapper {
+        display: inline-block;
+        padding: 1rem;
+        border-radius: 2rem;
+        background: white;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, .1);
+        transition: transform .3s;
+      }
+      .avatar-wrapper:hover { transform: translateY(-6px); }
+      .avatar {
+        width: clamp(220px, 40vw, 420px);
+        border-radius: 2rem;
+        display: block;
+      }
+      .cta {
+        margin: 3rem 0 6rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1.125rem;
+        background: linear-gradient(135deg, #ff4b91, #e60073);
+        color: #fff;
+        padding: .85rem 2.5rem;
+        border-radius: 9999px;
+        box-shadow: 0 10px 25px rgba(230, 0, 115, .35);
+        transition: transform .25s, box-shadow .25s;
+      }
+      .cta:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(230, 0, 115, .45);
+      }
+      footer {
+        font-size: .85rem;
+        opacity: .65;
+        padding: 2rem 0 1rem;
+      }
+      @media(max-width:480px){
+        p.lead{padding:0 1.25rem;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ── HERO / INTRO ───────────────────────────── -->
+    <section style="padding-top:4.5rem;">
+      <h1>Meet Riya 💋</h1>
+      <p class="lead">
+        Your AI‑powered virtual bae is finally here. Talk, flirt, or vent — she’s always listening.<br/>
+        <strong style="color:var(--accent);">And yes babe, she’s free for 4 days 😘</strong>
+      </p>
+
+      <div class="avatar-wrapper">
+        <img src="riya-avatar.png" alt="Riya AI girlfriend" class="avatar" />
       </div>
-    </div>
 
-    <a href="https://t.me/riyabaebot" style="display: inline-block; margin-top: 2rem; background: #ff4b91; color: white; padding: 1rem 2rem; font-size: 1.1rem; border-radius: 50px; text-decoration: none; box-shadow: 0 6px 20px rgba(255, 75, 145, 0.4); animation: pulse 2s infinite;">
-      💗 Chat with Riya Now
-    </a>
-  </section>
+      <div>
+        <a href="https://t.me/RiyaBaebot" target="_blank" rel="noopener" class="cta">
+          <span>💌</span> Chat with Riya Now
+        </a>
+      </div>
+    </section>
 
-  <style>
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      img { width: 200px; }
-      a { font-size: 1rem; padding: 0.8rem 1.5rem; }
-    }
-  </style>
-</body>
+    <!-- ── FOOTER ─────────────────────────────────── -->
+    <footer>
+      © 2025 Baeline · Made with ❤️ for hopeless romantics everywhere
+    </footer>
+  </body>
+</html>
