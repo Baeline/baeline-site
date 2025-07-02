@@ -144,18 +144,21 @@
       }
     }, 10000);
 
-    // Telegram fallback logic
+    // Telegram fallback logic without popup block
     document.getElementById("chatBtn").addEventListener("click", function () {
-      const telegramURL = "tg://resolve?domain=riyabaebot";
-      const webURL = "https://t.me/riyabaebot";
+      const telegramAppURL = "tg://resolve?domain=riyabaebot";
+      const telegramWebURL = "https://t.me/riyabaebot";
 
-      // Try to open in Telegram app
-      window.location.href = telegramURL;
+      // Try to open the Telegram app silently
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = telegramAppURL;
+      document.body.appendChild(iframe);
 
       // Fallback to web after delay
       setTimeout(() => {
-        window.open(webURL, "_blank");
-      }, 500);
+        window.location.href = telegramWebURL;
+      }, 300);
     });
   </script>
 </body>
