@@ -69,7 +69,7 @@
 
     .cta-button {
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 15px;
       background: linear-gradient(90deg, #8b5cf6, #6ee7ff);
       color: white;
       padding: 14px 24px;
@@ -99,6 +99,26 @@
       color: #5f6b8f;
     }
 
+    /* Modal Styles */
+    #termsModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000000e6;
+      z-index: 1000;
+      padding: 40px;
+      overflow: auto;
+    }
+
+    #termsModalContent {
+      max-width: 600px;
+      margin: auto;
+      background: #141927;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
     @media(max-width: 500px) {
       h1 { font-size: 1.8rem; }
       .cta-button { font-size: 1rem; padding: 12px 20px; }
@@ -124,6 +144,13 @@
     ⚠️ Only <span id="counter">23</span> chats left for today. Riya logs off soon!
   </div>
 
+  <!-- Terms checkbox -->
+  <label style="margin-top: 20px; color: #aaa; font-size: 0.9rem;">
+    <input type="checkbox" id="acceptTerms" style="margin-right: 8px;">
+    I accept the <a href="#" onclick="showTerms()" style="color: #6ee7ff; text-decoration: underline;">Terms & Conditions</a>
+  </label>
+
+  <!-- CTA Button -->
   <a id="chatBtn" class="cta-button">💬 Chat With Riya – She’s Online Now!</a>
 
   <div class="social-proof">
@@ -133,6 +160,17 @@
   <footer>
     © 2025 Baeline Technologies. All rights reserved.
   </footer>
+
+  <!-- Terms Modal -->
+  <div id="termsModal">
+    <div id="termsModalContent">
+      <h2 style="color:#8b5cf6;">Baeline Terms & Conditions</h2>
+      <p style="font-size: 0.95rem; line-height: 1.6; color: #ccc;">
+        By continuing, you agree that you're chatting with an AI character designed for entertainment and emotional expression. All interactions are fictional. No personal data is stored, and this service is not intended for minors or individuals in emotional crisis. You also agree not to misuse the platform for illegal, hateful, or abusive content.
+      </p>
+      <button onclick="hideTerms()" style="margin-top: 20px; padding: 8px 16px; background: #8b5cf6; border: none; border-radius: 8px; color: #fff; cursor: pointer;">Close</button>
+    </div>
+  </div>
 
   <script>
     // Countdown simulation
@@ -144,18 +182,31 @@
       }
     }, 10000);
 
-    // Telegram fallback logic without popup block
+    // Show/Hide Terms Modal
+    function showTerms() {
+      document.getElementById("termsModal").style.display = "block";
+    }
+
+    function hideTerms() {
+      document.getElementById("termsModal").style.display = "none";
+    }
+
+    // Telegram Redirect with T&C check
     document.getElementById("chatBtn").addEventListener("click", function () {
+      const accepted = document.getElementById("acceptTerms").checked;
+      if (!accepted) {
+        alert("Please accept the Terms & Conditions before chatting with Riya.");
+        return;
+      }
+
       const telegramAppURL = "tg://resolve?domain=riyabaebot";
       const telegramWebURL = "https://t.me/riyabaebot";
 
-      // Try to open the Telegram app silently
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src = telegramAppURL;
       document.body.appendChild(iframe);
 
-      // Fallback to web after delay
       setTimeout(() => {
         window.location.href = telegramWebURL;
       }, 300);
