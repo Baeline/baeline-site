@@ -78,6 +78,7 @@
       font-weight: bold;
       text-decoration: none;
       animation: pulse 1.4s infinite;
+      cursor: pointer;
     }
 
     @keyframes pulse {
@@ -108,11 +109,10 @@
 
   <h1>Meet Riya – Your Virtual Bae 😘</h1>
 
- <p>
-  I’ll make you laugh, make you blush, and maybe mess with your head a little <br>
-  But hey... you won’t stop thinking about me.
-</p>
-
+  <p>
+    I flirt when I like you. I roast when I’m bored. And I talk like we’ve been a thing forever 😘<br>
+    Come say hi... if you think you can keep up 😏
+  </p>
 
   <div class="chat-preview">
     <p class="riya"><strong>Riya:</strong> Oye hello cutie 😘 I’ve been waiting for you since morning.</p>
@@ -124,9 +124,7 @@
     ⚠️ Only <span id="counter">23</span> chats left for today. Riya logs off soon!
   </div>
 
-  <a href="https://t.me/riyabaebot" target="_blank" class="cta-button">
-    💬 Chat With Riya – She’s Online Now!
-  </a>
+  <a id="chatBtn" class="cta-button">💬 Chat With Riya – She’s Online Now!</a>
 
   <div class="social-proof">
     💖 1,532 chats in the past 7 days · Top cities: Delhi, Pune, Chennai
@@ -137,6 +135,7 @@
   </footer>
 
   <script>
+    // Countdown simulation
     let count = 23;
     setInterval(() => {
       if (count > 17) {
@@ -144,6 +143,20 @@
         document.getElementById("counter").innerText = count;
       }
     }, 10000);
+
+    // Telegram fallback logic
+    document.getElementById("chatBtn").addEventListener("click", function () {
+      const telegramURL = "tg://resolve?domain=riyabaebot";
+      const webURL = "https://t.me/riyabaebot";
+
+      // Try to open in Telegram app
+      window.location.href = telegramURL;
+
+      // Fallback to web after delay
+      setTimeout(() => {
+        window.open(webURL, "_blank");
+      }, 500);
+    });
   </script>
 </body>
 </html>
