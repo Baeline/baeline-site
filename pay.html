@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Complete Payment – Baeline</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unlock Riya 💖</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-</head>
-<body style="font-family:sans-serif;text-align:center;margin-top:100px;">
-  <h2>Almost There 😘</h2>
-  <p>Click below to unlock full access to Riya!</p>
-  <button id="rzp-button" style="padding:10px 20px;font-size:18px;">💸 Pay ₹49</button>
-
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderId = urlParams.get("order_id");
-
-    if (!orderId) {
-      document.body.innerHTML = "<h2>⚠️ Invalid or missing order ID</h2>";
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
     }
 
-    document.getElementById("rzp-button").onclick = function(e) {
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff0055;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e6004c;
+    }
+
+    img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://www.baeline.com/riya-avatar.png" alt="Riya" />
+  <h2>Boo, Riya’s waiting 😘</h2>
+  <p>Tap below to unlock full access for just ₹49</p>
+  <button onclick="startPayment()">💖 Unlock Chat – ₹49</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    const tgUser = tg.initDataUnsafe?.user?.id || "guest_" + Date.now();
+
+    async function startPayment() {
+      const res = await fetch(`https://riya-cmc5.vercel.app/create-order?user_id=${tgUser}`);
+      const order = await res.json();
+
       const options = {
-        key: "rzp_live_R92bH8qooQzbGF", // ← replace this below
-        amount: 4900,
+        key: "rzp_test_YourKeyHere", // 🔁 Replace with LIVE Razorpay Key
+        amount: order.amount,
         currency: "INR",
         name: "Baeline",
-        description: "Unlock full access",
-        order_id: orderId,
+        description: "Riya Chat Access",
+        image: "https://www.baeline.com/riya-avatar.png",
+        order_id: order.id,
         handler: function (response) {
-          alert("✅ Payment successful! Go back to Telegram.");
+          alert("Payment successful! 🎉");
+          tg.sendData("payment_done"); // Sends signal back to bot
+          tg.close();
         },
         prefill: {
-          name: "Baeline User",
-          email: "baeline@baeline.com"
+          name: "Telegram User",
+          email: "test@example.com",
+          contact: "9999999999"
         },
         theme: {
-          color: "#F5317F"
+          color: "#ff0055"
         }
       };
 
       const rzp = new Razorpay(options);
       rzp.open();
-      e.preventDefault();
-    };
+    }
   </script>
 </body>
 </html>
