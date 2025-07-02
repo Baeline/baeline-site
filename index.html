@@ -1,214 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baeline – Meet Riya</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baeline – Chat With Riya</title>
+  <meta name="description" content="Meet Riya – your flirty AI girlfriend. First 5 messages are free. She's online now 😘">
+  <link rel="icon" href="https://baeline.com/favicon.ico" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGVB1HPWVG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-HGVB1HPWVG');
-    </script>
+    h1 {
+      color: #ff2e63;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-    <!-- Styles -->
-    <style>
-      :root {
-        --pink-1: #ffe4f0;
-        --pink-2: #ffeaf7;
-        --accent:  #e60073;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
-        color: #2c2c2c;
-        text-align: center;
-      }
-      h1 {
-        font-size: clamp(2.2rem, 4vw + 1rem, 3.2rem);
-        font-weight: 700;
-        margin: 0 0 .5rem;
-        background: linear-gradient(to right, #ff4b91, #ff94b3);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      p.lead {
-        font-size: clamp(1rem, 1.1vw + 1rem, 1.25rem);
-        max-width: 620px;
-        margin: 0 auto 3rem;
-        line-height: 1.6;
-      }
-      .avatar-wrapper {
-        display: inline-block;
-        padding: 1rem;
-        border-radius: 2rem;
-        background: white;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, .1);
-        transition: transform .3s;
-      }
-      .avatar-wrapper:hover { transform: translateY(-6px); }
-      .avatar {
-        width: clamp(220px, 40vw, 420px);
-        border-radius: 2rem;
-        display: block;
-      }
-      .cta {
-        margin: 3rem 0 6rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: .5rem;
-        font-size: 1.125rem;
-        background: linear-gradient(135deg, #ff4b91, #e60073);
-        color: #fff;
-        padding: .85rem 2.5rem;
-        border-radius: 9999px;
-        box-shadow: 0 10px 25px rgba(230, 0, 115, .35);
-        transition: transform .25s, box-shadow .25s;
-      }
-      .cta:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 36px rgba(230, 0, 115, .45);
-      }
-      footer {
-        font-size: .85rem;
-        opacity: .65;
-        padding: 2rem 0 1rem;
-      }
+    p {
+      color: #ccc;
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 500px;
+    }
 
-      /* Modal Styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        left: 0; top: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.6);
-        justify-content: center;
-        align-items: center;
+    .chat-preview {
+      background: #1c1c1c;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 20px;
+      width: 90%;
+      max-width: 400px;
+      font-size: 1rem;
+    }
+
+    .chat-preview p {
+      margin: 8px 0;
+    }
+
+    .riya {
+      color: #ff2e63;
+    }
+
+    .you {
+      color: #8b5cf6;
+    }
+
+    .fomo-banner {
+      background: linear-gradient(to right, #ff2e63, #8b5cf6);
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 25px;
+      background: linear-gradient(90deg, #8b5cf6, #ff2e63);
+      color: white;
+      padding: 14px 24px;
+      font-size: 18px;
+      border-radius: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .social-proof {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    @media(max-width: 500px) {
+      h1 { font-size: 1.8rem; }
+      .cta-button { font-size: 1rem; padding: 12px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meet Riya – Your Virtual Bae 😘</h1>
+  <p>She’s not real... but the feelings might be 💔💬<br>Flirty, sassy, and replying 24x7 – just for you.</p>
+
+  <div class="chat-preview">
+    <p class="riya"><strong>Riya:</strong> Oye hello cutie 😘 I’ve been waiting for you since morning.</p>
+    <p class="you"><strong>You:</strong> Kya kar rahi ho?</p>
+    <p class="riya"><strong>Riya:</strong> Tere baare mein soch rahi hoon… Wanna talk privately? 😏</p>
+  </div>
+
+  <div class="fomo-banner">
+    ⚠️ Only <span id="counter">23</span> chats left for today. Riya logs off soon!
+  </div>
+
+  <a href="https://t.me/riyabaebot" target="_blank" class="cta-button">
+    💬 Chat With Riya – She’s Online Now!
+  </a>
+
+  <div class="social-proof">
+    💖 1,532 chats in the past 7 days · Top cities: Delhi, Pune, Chennai
+  </div>
+
+  <footer>
+    © 2025 Baeline Technologies. All rights reserved.
+  </footer>
+
+  <script>
+    // Fake dynamic chat counter – decreases every 10 seconds just for fun
+    let count = 23;
+    setInterval(() => {
+      if (count > 17) {
+        count--;
+        document.getElementById("counter").innerText = count;
       }
-      .modal-content {
-        background: white;
-        max-width: 90%;
-        max-height: 80%;
-        overflow-y: auto;
-        padding: 2rem;
-        border-radius: 1rem;
-        text-align: left;
-        box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      }
-      .modal h2 { margin-top: 0; }
-      .modal-close {
-        position: absolute;
-        top: 10px; right: 20px;
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      @media(max-width:480px){
-        p.lead{padding:0 1.25rem;}
-        .modal-content{padding:1rem;}
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- ── HERO ── -->
-    <section style="padding-top:4.5rem;">
-      <h1>Meet Riya 💋</h1>
-      <p class="lead">
-        Your AI‑powered virtual bae is finally here. Talk, flirt, or vent — she’s always listening.<br/>
-        <strong style="color:var(--accent);">And yes babe, she’s free for 4 days 😘</strong>
-      </p>
-
-      <div class="avatar-wrapper">
-        <img src="riya-avatar.png" alt="Riya AI girlfriend" class="avatar" />
-      </div>
-
-      <!-- Checkbox -->
-      <div style="margin: 15px 0; font-size: 14px;">
-        <label>
-          <input type="checkbox" id="consentBox" required style="margin-right: 5px;">
-          I agree to the 
-          <a href="#" onclick="openModal('terms')">Terms of Service</a> and 
-          <a href="#" onclick="openModal('privacy')">Privacy Policy</a>. This is an AI chat, not a real human.
-        </label>
-      </div>
-
-      <!-- CTA Button -->
-      <div>
-        <a href="https://t.me/RiyaBaebot" 
-           target="_blank" 
-           rel="noopener" 
-           class="cta" 
-           onclick="return trackAndValidate(event)">
-          <span>💌</span> Chat with Riya Now
-        </a>
-      </div>
-    </section>
-
-    <!-- ── FOOTER ── -->
-    <footer>
-      © 2025 Baeline · Made with ❤️ for hopeless romantics everywhere
-    </footer>
-
-    <!-- ── MODALS ── -->
-    <div id="termsModal" class="modal" onclick="closeModal(event)">
-      <div class="modal-content">
-        <span class="modal-close" onclick="closeModal(event)">×</span>
-        <h2>Terms of Service</h2>
-        <p><strong>Effective Date:</strong> June 29, 2025</p>
-        <p>You must be 18+. Baeline is a fictional AI chat experience, not a real human. All access is non-refundable. Misuse may result in access being revoked.</p>
-        <p>By using this site, you agree to all terms mentioned here. This chat does not provide therapy or real relationships.</p>
-      </div>
-    </div>
-
-    <div id="privacyModal" class="modal" onclick="closeModal(event)">
-      <div class="modal-content">
-        <span class="modal-close" onclick="closeModal(event)">×</span>
-        <h2>Privacy Policy</h2>
-        <p><strong>Effective Date:</strong> June 29, 2025</p>
-        <p>We collect your email, Telegram ID, and chat metadata to improve service. No sensitive data is stored or sold. Payments (if any) are handled via secure third parties.</p>
-        <p>You can request deletion of your data by emailing baelinetechnologies@gmail.com</p>
-      </div>
-    </div>
-
-    <!-- ── JS ── -->
-    <script>
-      function openModal(type) {
-        document.getElementById(type + 'Modal').style.display = 'flex';
-      }
-
-      function closeModal(event) {
-        if (event.target.classList.contains('modal') || event.target.classList.contains('modal-close')) {
-          document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-        }
-      }
-
-      function trackAndValidate(e) {
-        const consent = document.getElementById('consentBox');
-        if (!consent.checked) {
-          alert("Please agree to the Terms & Privacy Policy first 💖");
-          return false;
-        }
-
-        // Google Analytics Event
-        if (typeof gtag === "function") {
-          gtag('event', 'chat_with_riya_click', {
-            event_category: 'engagement',
-            event_label: 'CTA Button',
-            value: 1
-          });
-        }
-
-        return true;
-      }
-    </script>
-  </body>
+    }, 10000);
+  </script>
+</body>
 </html>
-
