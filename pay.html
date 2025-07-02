@@ -34,7 +34,8 @@
     const userId = new URLSearchParams(window.location.search).get("user_id");
 
     async function getOrder() {
-      const response = await fetch("https://your-api-url.com/create_order", {
+      const response = await fetch("https://riya-bot.up.railway.app/create_order", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId })
@@ -45,7 +46,7 @@
     document.getElementById("pay-btn").onclick = async function () {
       const order = await getOrder();
       const options = {
-        key: "RAZORPAY_KEY_ID", // replace with real key
+        key: "rzp_live_R92bH8qooQzbGF", // replace with real key
         amount: order.amount,
         currency: "INR",
         name: "Baeline",
